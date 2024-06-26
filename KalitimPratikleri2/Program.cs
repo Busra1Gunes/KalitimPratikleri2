@@ -1,12 +1,40 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Runtime.ConstrainedExecution;
+
 A a = new A("");
 B b = new B(true);
 C c = new C();
+Kazanan kaza= new Aday1();
+Console.WriteLine(kaza.Kazanan() + "\n");
 
 Console.WriteLine(a.Metod() + "\n" + b.Metod() + "\n" + c.Metod());
+//Polimorfizim , interfacelerin veya base classların implemente edildikleri veya inherid edildikleri sınıfı
+//referansını tutma özelliğinden dolayı o interface üzerinden farklı implementasyonlara geçebiliyoruz nuda bizim için poliformik ççok biçimli bir ortam sunuyor
+//base claasın referansı derived classların nesnelerini  refere edebilirler
+// örnek A yeni=new C(); 
+public interface Kazanan
+{
+    string  Kazanan();
 
+}
 
+public class Aday1 : Kazanan
+{
 
+    string Kazanan.Kazanan()
+    {
+        return "Kazanan Aday1";
+    }
+}
+public class Aday2 : Kazanan
+{
+   
+
+    string Kazanan.Kazanan()
+    {
+        return "Kazanan Aday2";
+    }
+}
 public class A
 {
     public A(string a)
@@ -50,4 +78,46 @@ public class C : B
         return "Ben c classıyım A'daki metodu önce B değiştirdi şimdi de ben değiştirdim";
     }
 
+}
+//Polimorfizm, bir interface veya base class üzerinden farklı sınıfların farklı davranışlarını sergileme yeteneğidir.
+//Örneğin, hayvanları temsil eden bir Animal interface'i veya base class'ı düşünelim.Bu interface veya base class,
+//her hayvan türünün ortak özelliklerini ve bir makeSound() metodunu tanımlasın.
+
+// Animal interface'i veya base class'ı
+interface Animal
+{
+    void makeSound();
+}
+
+// Dog sınıfı
+class Dog : Animal
+{
+
+    public  void makeSound()
+    {
+        string a = ("Hav hav!");
+    }
+}
+
+// Cat sınıfı
+class Cat : Animal
+{
+
+    public  void makeSound()
+    {
+        string a = ("Miyav!");
+    }
+}
+
+// Kullanımı gösteren örnek
+public class Main
+{
+    public static void main(String[] args)
+    { 
+        Animal animal1 = new Dog();
+        Animal animal2 = new Cat();
+
+        animal1.makeSound(); // Hav hav!
+        animal2.makeSound(); // Miyav!
+    }
 }
